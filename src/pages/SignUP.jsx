@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
@@ -11,7 +11,7 @@ import useGetData from "../hooks/useGetData";
 const SignUP = () => {
   const { data: districts = [] } = useGetData("/districts");
   const { data: upazila = [] } = useGetData("/upazila");
-
+  const navigate = useNavigate();
   const { createUser, updateUser, LogOut } = useAuth() || {};
 
   const image_api_key = import.meta.env.VITE_IMAGE_API_KEY;
@@ -81,7 +81,7 @@ const SignUP = () => {
                 .then(() => {
                   LogOut()
                     .then(() => {
-                      // naviagete('/login')
+                      navigate("/login");
                       reset();
                       Swal.fire({
                         title: "Congratulations",
@@ -253,7 +253,7 @@ const SignUP = () => {
                   name="password"
                   {...register("password", {
                     required: "password is required",
-                    pattern: /^.{6}/,
+                    pattern: /^(?=.*[A-Z]).{6,}$/,
                   })}
                   onChange={(e) => setPassword(e.target.value)}
                   className="input input-bordered w-full focus:outline-none focus:border-px focus:border-first-color"
@@ -262,7 +262,10 @@ const SignUP = () => {
                   <p className="text-red">{errors?.password?.message}</p>
                 )}
                 {errors.password?.type === "pattern" && (
-                  <p className="text-red">password should be 6 char long</p>
+                  <p className="text-red">
+                    password should be 6 char long and contain one upper case
+                    letter
+                  </p>
                 )}
 
                 {/* <label className="label">
