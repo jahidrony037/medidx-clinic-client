@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import useGetData from "../hooks/useGetData";
+import SocialLogin from "../shared/SocialLogin";
 
 const SignUP = () => {
   const { data: districts = [] } = useGetData("/districts");
@@ -320,7 +321,9 @@ const SignUP = () => {
               </label>
             </div>
             <div className="divider">OR</div>
-            <div className="py-5"></div>
+            <div className="py-5">
+              <SocialLogin />
+            </div>
           </div>
 
           <div className="text-center lg:text-left md:w-[48%] w-full">

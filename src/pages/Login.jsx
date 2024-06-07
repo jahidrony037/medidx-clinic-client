@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
+import SocialLogin from "../shared/SocialLogin";
 
 const Login = () => {
   const { loginUser } = useAuth() || {};
@@ -13,9 +14,9 @@ const Login = () => {
     register,
   } = useForm();
   const onSubmit = (data) => {
-    console.log(data);
+    // console.log(data);
     const { email, password } = data;
-    console.log(email, password);
+    // console.log(email, password);
     loginUser(email, password)
       .then((res) => {
         const user = res.user;
@@ -118,7 +119,9 @@ const Login = () => {
               </label>
             </div>
             <div className="divider">OR</div>
-            <div className="py-5">{/* <SocialLogin></SocialLogin> */}</div>
+            <div className="py-5">
+              <SocialLogin />
+            </div>
           </div>
         </div>
       </div>
