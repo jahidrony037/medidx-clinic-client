@@ -31,7 +31,7 @@ const Navbar = () => {
   );
   return (
     <nav>
-      <div className="navbar bg-base-100 niramit">
+      <div className="navbar bg-base-100 niramit absolute z-10 bg-transparent">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -110,7 +110,7 @@ const Navbar = () => {
                         <li className="w-40">
                           <button
                             onClick={() => handleLogOut()}
-                            className="md:px-5 px-2 md:py-2 py-1 relative rounded  group overflow-hidden font-medium bg-second-color text-white inline-block border-[#fff]  border-[1px] w-full text-center text-[#fff]"
+                            className="md:px-[20px] px-[8px] md:py-2 py-1 relative rounded  group overflow-hidden font-medium bg-second-color text-white inline-block border-[#fff]  border-[1px] w-full text-center text-[#fff]"
                           >
                             <span className="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-[#fff]  group-hover:h-full opacity-90 group-hover:border-second-color group-hover:border-[1px] group-hover:rounded"></span>
                             <span className="relative group-hover:text-second-color font-bold">

@@ -2978,6 +2978,13 @@ queue-microtask@^1.2.2:
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
+react-awesome-slider@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/react-awesome-slider/-/react-awesome-slider-4.1.0.tgz#6a800300cb3edd556d2388090f65ac731467639a"
+  integrity sha512-cbPI1MTpVLKbEH6gf9bwtJb8Ja6R/YJonKbUQehfq2B2AAJkgDMeHntaa4SgGCRqWd55xKiT+CkjfKau1QRsKw==
+  dependencies:
+    web-animation-club "^0.6.0"
+
 react-dom@^18.2.0:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.3.1.tgz#c2265d79511b57d479b3dd3fdfa51536494c5cb4"
@@ -3406,6 +3413,11 @@ sweetalert2@^11.11.0:
   resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.11.0.tgz#0bbae4330f5e423c942639bb0e9dc2d748eb88fd"
   integrity sha512-wKCTtoE6lQVDKaJ5FFq+znk/YykJmJlD8RnLZps8C7DyivctCoRlVeeOwnKfgwKS+QJYon7s++3dmNi3/am1tw==
 
+swiper@^11.1.4:
+  version "11.1.4"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-11.1.4.tgz#2f8e303e8bf9e5bc40a3885fc637ae60ff27996c"
+  integrity sha512-1n7kbYJB2dFEpUHRFszq7gys/ofIBrMNibwTiMvPHwneKND/t9kImnHt6CfGPScMHgI+dWMbGTycCKGMoOO1KA==
+
 tailwindcss@^3.4.3:
   version "3.4.3"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.4.3.tgz#be48f5283df77dfced705451319a5dffb8621519"
@@ -3598,6 +3610,11 @@ vite@^5.2.0:
     rollup "^4.13.0"
   optionalDependencies:
     fsevents "~2.3.3"
+
+web-animation-club@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/web-animation-club/-/web-animation-club-0.6.0.tgz#c1dd79646b21e4265b5f95ae9cb8b93b73e05e47"
+  integrity sha512-9W+EQu1HiaPLe/7WZlhJ2ULqQ4VL80RPDYW+ZcjfTKp6ayOuT1k3SVO6+tu0VBRmOqueJ/mrG+rjjInIv8Aglg==
 
 websocket-driver@>=0.5.1:
   version "0.7.4"
