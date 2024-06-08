@@ -19,6 +19,7 @@ const SocialLogin = () => {
         const userInfo = {
           email: user?.email,
           name: user?.displayName,
+          imageURL: user?.photoURL,
           status: "active",
         };
         if (user) {
@@ -26,7 +27,10 @@ const SocialLogin = () => {
             .post("/users", userInfo)
             .then((res) => {
               // console.log(res.data);
-              if (res.data?.acknowledged) {
+              if (
+                res.data?.acknowledged ||
+                res.data?.message === "user already exists"
+              ) {
                 toast.success("Login in Successfully done!");
                 navigate("/");
               }

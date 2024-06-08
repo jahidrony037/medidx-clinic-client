@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
@@ -17,6 +18,7 @@ const UpdateProfile = () => {
   const { user, loading, updateUser } = useAuth() || {};
   //   console.log(user.email);
   const axiosPublic = useAxiosPublic();
+  const navigate = useNavigate();
   const { data: person = {}, refetch } = useQuery({
     queryKey: ["data", "person"],
     enabled: !loading && !!user?.email,
@@ -62,6 +64,7 @@ const UpdateProfile = () => {
                 icon: "success",
               });
               refetch();
+              navigate("/");
             }
           })
           .catch((err) => toast.error(err.message));
