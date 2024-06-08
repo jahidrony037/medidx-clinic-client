@@ -3,19 +3,10 @@ import MainApp from "../layouts/MainApp/MainApp";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import SignUP from "../pages/SignUP";
+import UpdateProfile from "../pages/UpdateProfile";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainApp />,
-    errorElement: <p>Error page</p>,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-    ],
-  },
   {
     path: "/signUP",
     errorElement: <p>Error Page</p>,
@@ -25,6 +16,25 @@ const router = createBrowserRouter([
     path: "/login",
     errorElement: <p>Error Page</p>,
     element: <Login />,
+  },
+  {
+    path: "/",
+    element: <MainApp />,
+    errorElement: <p>Error page</p>,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/updateProfile",
+        element: (
+          <PrivateRoute>
+            <UpdateProfile />
+          </PrivateRoute>
+        ),
+      },
+    ],
   },
 ]);
 

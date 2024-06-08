@@ -6,7 +6,7 @@ const Navbar = () => {
   const { user, isLoading, show, setShow, LogOut } = useAuth() || {};
 
   const handleLogOut = () => {
-    console.log("click the handleLogOut btn");
+    // console.log("click the handleLogOut btn");
     LogOut()
       .then(() => {
         toast.success("log out successful");
@@ -16,7 +16,7 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li>
-        <NavLink to="/home">Home</NavLink>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
         <NavLink to="/about">About</NavLink>
@@ -24,14 +24,21 @@ const Navbar = () => {
       <li>
         <NavLink to="/allTest">All Test</NavLink>
       </li>
-      <li>
-        <NavLink to="/dashboard">Dashboard</NavLink>
-      </li>
+      {user && (
+        <li>
+          <NavLink to="/dashboard">Dashboard</NavLink>
+        </li>
+      )}
+      {user && (
+        <li>
+          <NavLink to="/updateProfile">Update Profile</NavLink>
+        </li>
+      )}
     </>
   );
   return (
     <nav>
-      <div className="navbar bg-base-100 niramit absolute z-10 bg-transparent">
+      <div className="navbar bg-base-100 niramit  z-10 fixed top-0 bg-transparent bg-opacity-40 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

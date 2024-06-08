@@ -51,7 +51,7 @@ const SignUP = () => {
 
   const onSubmit = async (data) => {
     console.log(data);
-    const { email, password, name } = data;
+    const { email, password, name, bloodGroup, district, upazila } = data;
     const imageFile = data.image[0];
     // console.log(imageFile);
     if (data.password !== confirmPassword) {
@@ -72,7 +72,17 @@ const SignUP = () => {
       // console.log(typeof res.data.success);
       if (res.data?.success) {
         const image = res.data.data?.display_url;
-        console.log("image uploaded", image);
+        // console.log("image uploaded", image);
+
+        const userInfo = {
+          email: email,
+          name: name,
+          status: "active",
+          imageURL: image,
+          bloodGroup: bloodGroup,
+          district: district,
+          upazila: upazila,
+        };
 
         createUser(email, password)
           .then((res) => {
@@ -80,17 +90,28 @@ const SignUP = () => {
             if (user) {
               updateUser(name, image)
                 .then(() => {
-                  LogOut()
-                    .then(() => {
-                      navigate("/login");
-                      reset();
-                      Swal.fire({
-                        title: "Congratulations",
-                        text: "User Create Successfully!",
-                        icon: "success",
-                      });
+                  axiosPublic
+                    .post("/users", userInfo)
+                    .then((res) => {
+                      if (res.data?.acknowledged) {
+                        LogOut()
+                          .then(() => {
+                            navigate("/login");
+                            reset();
+                            Swal.fire({
+                              title: "Congratulations",
+                              text: "User Create Successfully!",
+                              icon: "success",
+                            });
+                          })
+                          .catch((err) => toast.error(err.message));
+                      }
                     })
-                    .catch((err) => toast.error(err.message));
+                    .catch((err) => {
+                      if (err) {
+                        return console.log(err.message);
+                      }
+                    });
                 })
                 .catch((err) => toast.error(err.message));
             }
@@ -202,7 +223,7 @@ const SignUP = () => {
                 </label>
                 <select
                   className="select select-bordered w-full focus:outline-none focus:border-px focus:border-first-color"
-                  {...register("districts", {
+                  {...register("district", {
                     required: "District is Required",
                   })}
                 >
@@ -215,8 +236,8 @@ const SignUP = () => {
                     </option>
                   ))}
                 </select>
-                {errors.districts?.type === "required" && (
-                  <p className="text-red">{errors?.districts?.message}</p>
+                {errors.district?.type === "required" && (
+                  <p className="text-red">{errors?.district?.message}</p>
                 )}
               </div>
 

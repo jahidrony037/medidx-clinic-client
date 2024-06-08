@@ -13,7 +13,7 @@ import { auth } from "../../firebase/firebase.init";
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [show, setShow] = useState(false);
 
   const createUser = (email, password) => {
@@ -34,6 +34,7 @@ const AuthProvider = ({ children }) => {
   };
   const provider = new GoogleAuthProvider();
   const loginWithGoogle = () => {
+    setLoading(true);
     return signInWithPopup(auth, provider);
   };
 
@@ -49,7 +50,7 @@ const AuthProvider = ({ children }) => {
         setLoading(false);
       } else {
         setUser(null);
-        setLoading(true);
+        setLoading(false);
       }
     });
 
