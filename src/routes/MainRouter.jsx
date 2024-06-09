@@ -1,6 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainApp from "../layouts/MainApp/MainApp";
 import Dashboard from "../pages/Dashboard/Dashboard";
+import UserAppointments from "../pages/Dashboard/UserDashboard/UserAppointments";
+import UserProfile from "../pages/Dashboard/UserDashboard/UserProfile";
+import UserTestResult from "../pages/Dashboard/UserDashboard/UserTestResult";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import SignUP from "../pages/SignUP";
@@ -28,18 +31,44 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "/dashboard",
-        element: (
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        ),
-      },
-      {
         path: "/updateProfile",
         element: (
           <PrivateRoute>
             <UpdateProfile />
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        path: "/dashboard/userProfile",
+        element: (
+          <PrivateRoute>
+            <UserProfile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/userAppointments",
+        element: (
+          <PrivateRoute>
+            <UserAppointments />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/testResult",
+        element: (
+          <PrivateRoute>
+            <UserTestResult />
           </PrivateRoute>
         ),
       },
