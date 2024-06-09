@@ -10,11 +10,13 @@ import {
 import PropTypes from "prop-types";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../../firebase/firebase.init";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 export const AuthContext = createContext(null);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [show, setShow] = useState(false);
+  const axiosPublic = useAxiosPublic();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -44,11 +46,23 @@ const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser) {
         setUser(currentUser);
+
+        const userInfo = { email: currentUser?.email || user?.email };
+        const res = await axiosPublic.post("/jwt", userInfo);
+        // console.log(res.data);
+        if (res.data) {
+          const token = res.data?.token;
+          localStorage.setItem("access-token", token);
+        } else {
+          console.log("error occured");
+        }
+
         setLoading(false);
       } else {
+        localStorage.removeItem("access-token");
         setUser(null);
         setLoading(false);
       }
@@ -57,7 +71,7 @@ const AuthProvider = ({ children }) => {
     return () => {
       return unsubscribe;
     };
-  }, [user]);
+  }, [axiosPublic, user]);
 
   const allInfo = {
     user,

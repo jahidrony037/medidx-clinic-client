@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 import useGetData from "../hooks/useGetData";
 
 const UpdateProfile = () => {
@@ -18,13 +19,14 @@ const UpdateProfile = () => {
   const { user, loading, updateUser } = useAuth() || {};
   //   console.log(user.email);
   const axiosPublic = useAxiosPublic();
+  const axiosSecure = useAxiosSecure();
   const navigate = useNavigate();
   const { data: person = {}, refetch } = useQuery({
     queryKey: ["data", "person"],
     enabled: !loading && !!user?.email,
     queryFn: async () => {
-      const res = await axiosPublic.get(`/users?email=${user?.email}`);
-      console.log(res.data);
+      const res = await axiosSecure.get(`/users?email=${user?.email}`);
+      // console.log(res.data);
       return res.data;
     },
   });
@@ -55,12 +57,12 @@ const UpdateProfile = () => {
         };
         updateUser(data?.name, image)
           .then(async () => {
-            const res = await axiosPublic.patch(`/users/${_id}`, userInfo);
+            const res = await axiosSecure.patch(`/users/${_id}`, userInfo);
             // console.log(res.data);
             if (res.data?.modifiedCount > 0) {
               Swal.fire({
                 title: "Congratulations",
-                text: "You Data Update Successfully Done",
+                text: "Your Data Update Successfully Done",
                 icon: "success",
               });
               refetch();

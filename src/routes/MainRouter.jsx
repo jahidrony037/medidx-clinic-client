@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainApp from "../layouts/MainApp/MainApp";
+import Dashboard from "../pages/Dashboard/Dashboard";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import SignUP from "../pages/SignUP";
@@ -25,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/updateProfile",

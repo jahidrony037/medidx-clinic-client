@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
 import SocialLogin from "../shared/SocialLogin";
@@ -8,6 +8,9 @@ import SocialLogin from "../shared/SocialLogin";
 const Login = () => {
   const { loginUser } = useAuth() || {};
   const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  // console.log(location);
   const {
     handleSubmit,
     formState: { errors },
@@ -21,9 +24,13 @@ const Login = () => {
       .then((res) => {
         const user = res.user;
         if (user) {
-          console.log(user);
           toast.success(`${user.displayName} Login Successful`);
-          navigate("/");
+          // {
+          //   location.pathname
+          //     ? navigate(`${location.pathname}`)
+          //     : navigate("/login");
+          // }
+          navigate(from, { replace: true });
         }
       })
       .catch((err) => toast.error(err.message));
