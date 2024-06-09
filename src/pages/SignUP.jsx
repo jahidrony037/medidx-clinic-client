@@ -50,7 +50,7 @@ const SignUP = () => {
   const axiosPublic = useAxiosPublic();
 
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     const { email, password, name, bloodGroup, district, upazila } = data;
     const imageFile = data.image[0];
     // console.log(imageFile);

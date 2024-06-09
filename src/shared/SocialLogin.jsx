@@ -24,14 +24,14 @@ const SocialLogin = () => {
         };
         if (user) {
           axiosPublic
-            .post("/users", userInfo)
+            .post(`/users?email=${user?.email}`, userInfo)
             .then((res) => {
               // console.log(res.data);
               if (
                 res.data?.acknowledged ||
                 res.data?.message === "user already exists"
               ) {
-                toast.success("Login in Successfully done!");
+                // toast.success("Login in Successfully done!");
                 navigate("/");
               }
             })
