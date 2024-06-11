@@ -1,4 +1,5 @@
 import { NavLink, Outlet } from "react-router-dom";
+import Loader from "../../components/Loader";
 import useAdmin from "../../hooks/useAdmin";
 
 const Dashboard = () => {
@@ -7,9 +8,9 @@ const Dashboard = () => {
   return (
     <div className="niramit">
       <div className="flex gap-5">
-        <div className="bg-second-color min-h-screen pl-2 pr-5">
+        <div className="bg-first-color min-h-screen pl-2 pr-5">
           {adminLoading ? (
-            <p>loading</p>
+            <Loader />
           ) : (
             <div>
               {!isAdmin ? (
@@ -32,9 +33,7 @@ const Dashboard = () => {
                     <NavLink to="/dashboard/userProfile">Admin Profile</NavLink>
                   </li>
                   <li className="cursor-pointer  p-2 rounded-xl">
-                    <NavLink to="/dashboard/userAppointments">
-                      All Users
-                    </NavLink>
+                    <NavLink to="/dashboard/allUsers">All Users</NavLink>
                   </li>
                   <li className="cursor-pointer  p-2 rounded-xl">
                     <NavLink to="/dashboard/testResult">Test Results</NavLink>
@@ -42,6 +41,11 @@ const Dashboard = () => {
                 </ul>
               )}
               <div className="divider divider-accent"></div>
+              <ul className="flex flex-col items-start gap-5  text-[#fff] ">
+                <li className="cursor-pointer p-2 rounded-xl">
+                  <NavLink to="/">Home</NavLink>
+                </li>
+              </ul>
             </div>
           )}
         </div>

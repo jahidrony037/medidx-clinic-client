@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainApp from "../layouts/MainApp/MainApp";
+import AllUsers from "../pages/Dashboard/AdminDashboard/AllUsers";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import UserAppointments from "../pages/Dashboard/UserDashboard/UserAppointments";
 import UserProfile from "../pages/Dashboard/UserDashboard/UserProfile";
@@ -48,6 +49,11 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      //admin related route
+      {
+        path: "/dashboard/allUsers",
+        element: <AllUsers />,
+      },
       {
         path: "/dashboard/userProfile",
         element: (
