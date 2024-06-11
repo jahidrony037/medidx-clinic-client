@@ -4,7 +4,13 @@ import { FaFileDownload } from "react-icons/fa";
 import { MdGroups2 } from "react-icons/md";
 import UserInfoModal from "../../../components/UserInfoModal";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
-const User = ({ user, idx, handleChangeStatus }) => {
+const User = ({
+  user,
+  idx,
+  handleChangeStatus,
+  handleChangeRole,
+  handleDownloadDetails,
+}) => {
   const axiosSecure = useAxiosSecure();
   const [open, setOpen] = useState(false);
   const [userDetails, setUserDetails] = useState({});
@@ -25,7 +31,7 @@ const User = ({ user, idx, handleChangeStatus }) => {
       </th>
       <td>
         <div>
-          <div className="font-bold">{user?.name}</div>
+          <div className="font-bold uppercase">{user?.name}</div>
         </div>
       </td>
       <td>
@@ -42,17 +48,25 @@ const User = ({ user, idx, handleChangeStatus }) => {
           <button
             onClick={() => {
               handleChangeStatus(user);
-              //   setToggleStatus(!toggleStatus);
             }}
             className="btn"
-            // id="user-status"
           >
             {user?.status === "active" ? "blocked" : "active"}
           </button>
         </div>
       </td>
       <th className="uppercase">
-        {user?.role ? user?.role : <MdGroups2 title="Make Admin" size={30} />}
+        {user?.role ? (
+          user?.role
+        ) : (
+          <button
+            onClick={() => handleChangeRole(user)}
+            className="btn"
+            title="Make Admin"
+          >
+            <MdGroups2 title="Make Admin" size={30} />
+          </button>
+        )}
       </th>
       <th>
         <button
@@ -69,7 +83,7 @@ const User = ({ user, idx, handleChangeStatus }) => {
       </th>
       <th>
         <button
-          //   onClick={() => handleDownloadDetails(user._id)}
+          onClick={() => handleDownloadDetails(user)}
           className="btn btn-ghost"
         >
           <FaFileDownload size={30} />
@@ -86,6 +100,8 @@ User.propTypes = {
   handleChangeStatus: PropTypes.func,
   setToggleStatus: PropTypes.func,
   toggleStatus: PropTypes.bool,
+  handleChangeRole: PropTypes.func,
+  handleDownloadDetails: PropTypes.func,
 };
 
 export default User;
