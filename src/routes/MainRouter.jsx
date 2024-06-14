@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainApp from "../layouts/MainApp/MainApp";
+import AddTest from "../pages/Dashboard/AdminDashboard/AddTest";
 import AllUsers from "../pages/Dashboard/AdminDashboard/AllUsers";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import UserAppointments from "../pages/Dashboard/UserDashboard/UserAppointments";
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/allUsers",
         element: <AllUsers />,
+      },
+      {
+        path: "/dashboard/addTest",
+        element: <AddTest />,
       },
       {
         path: "/dashboard/userProfile",

@@ -8,7 +8,7 @@ const Dashboard = () => {
   return (
     <div className="niramit">
       <div className="flex gap-5">
-        <div className="bg-first-color min-h-screen pl-2 pr-5">
+        <div className="bg-first-color min-h-screen pl-2 pr-5 md:w-[15%]">
           {adminLoading ? (
             <Loader />
           ) : (
@@ -36,11 +36,11 @@ const Dashboard = () => {
                     <NavLink to="/dashboard/allUsers">All Users</NavLink>
                   </li>
                   <li className="cursor-pointer  p-2 rounded-xl">
-                    <NavLink to="/dashboard/testResult">Test Results</NavLink>
+                    <NavLink to="/dashboard/addTest">Add Test</NavLink>
                   </li>
                 </ul>
               )}
-              <div className="divider divider-accent"></div>
+              <div className="divider border-second-color border-[1px] h-[1px]"></div>
               <ul className="flex flex-col items-start gap-5  text-[#fff] ">
                 <li className="cursor-pointer p-2 rounded-xl">
                   <NavLink to="/">Home</NavLink>

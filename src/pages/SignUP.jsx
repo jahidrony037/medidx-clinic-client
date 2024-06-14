@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth";
 import useAxiosPublic from "../hooks/useAxiosPublic";
 import useGetData from "../hooks/useGetData";
+import useImageHostURL from "../hooks/useImageHostURL";
 import SocialLogin from "../shared/SocialLogin";
 
 const SignUP = () => {
@@ -15,9 +16,7 @@ const SignUP = () => {
   const navigate = useNavigate();
   const { createUser, updateUser, LogOut } = useAuth() || {};
 
-  const image_api_key = import.meta.env.VITE_IMAGE_API_KEY;
-  const image_host_url = import.meta.env.VITE_IMAGE_HOST_URL;
-  const host_url = `${image_host_url}?key=${image_api_key}`;
+  const host_url = useImageHostURL();
   // console.log(host_url);
 
   const {
