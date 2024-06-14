@@ -23,6 +23,7 @@ const AddTest = () => {
     reset,
     formState: { errors },
   } = useForm();
+  
   const slots = [
     "08.00 AM - 08.30 AM",
     "08.30 AM - 09.00 AM",
@@ -108,10 +109,10 @@ const AddTest = () => {
 
   return (
     <div>
-      <h2 className="text-4xl font-bold text-first-color lora text-center uppercase">
-        Here Add a NEW TEST
+      <h2 className="text-4xl font-bold mt-10 text-first-color lora text-center uppercase">
+        Here Add NEW TEST
       </h2>
-      <div>
+      <div className="mt-20 shadow-lg p-9 rounded-xl">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="w-full grid md:grid-cols-2 grid-cols-1 gap-10 items-center  md:px-1 pr-1">
             {/* Test Name Field */}
@@ -187,7 +188,7 @@ const AddTest = () => {
               )}
             </div>
           </div>
-          {/* Add Test */}
+          {/* Slots Test */}
           <div className="mt-10">
             <Controller
               name="slots"
