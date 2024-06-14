@@ -38,6 +38,9 @@ const Dashboard = () => {
                   <li className="cursor-pointer  p-2 rounded-xl">
                     <NavLink to="/dashboard/addTest">Add Test</NavLink>
                   </li>
+                  <li className="cursor-pointer  p-2 rounded-xl">
+                    <NavLink to="/dashboard/allTests">All Tests</NavLink>
+                  </li>
                 </ul>
               )}
               <div className="divider border-second-color border-[1px] h-[1px]"></div>
