@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainApp from "../layouts/MainApp/MainApp";
+import AddBanner from "../pages/Dashboard/AdminDashboard/AddBanner";
 import AddTest from "../pages/Dashboard/AdminDashboard/AddTest";
 import AllTests from "../pages/Dashboard/AdminDashboard/AllTests";
 import AllUsers from "../pages/Dashboard/AdminDashboard/AllUsers";
@@ -77,6 +78,16 @@ const router = createBrowserRouter([
           </AdminRoute>
         ),
       },
+      {
+        path: "/dashboard/addBanner",
+        element: (
+          <AdminRoute>
+            <AddBanner />
+          </AdminRoute>
+        ),
+      },
+
+      // USER Related Route
       {
         path: "/dashboard/userProfile",
         element: (
