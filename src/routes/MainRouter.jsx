@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import MainApp from "../layouts/MainApp/MainApp";
 import AddBanner from "../pages/Dashboard/AdminDashboard/AddBanner";
 import AddTest from "../pages/Dashboard/AdminDashboard/AddTest";
+import AllBanner from "../pages/Dashboard/AdminDashboard/AllBanner";
 import AllTests from "../pages/Dashboard/AdminDashboard/AllTests";
 import AllUsers from "../pages/Dashboard/AdminDashboard/AllUsers";
 import Dashboard from "../pages/Dashboard/Dashboard";
@@ -83,6 +84,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AddBanner />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/allBanner",
+        element: (
+          <AdminRoute>
+            <AllBanner />
           </AdminRoute>
         ),
       },

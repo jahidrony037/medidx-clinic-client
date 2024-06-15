@@ -65,6 +65,9 @@ const Dashboard = () => {
                       <NavLink to="/dashboard/allTests">All Tests</NavLink>
                     </li>
                     <li className="cursor-pointer  p-2 rounded-xl">
+                      <NavLink to="/dashboard/allBanner">All Banner</NavLink>
+                    </li>
+                    <li className="cursor-pointer  p-2 rounded-xl">
                       <NavLink to="/dashboard/addBanner">Add Banner</NavLink>
                     </li>
                   </ul>
