@@ -1,3 +1,4 @@
+import { useTheme } from "@emotion/react";
 import {
   Box,
   Chip,
@@ -7,7 +8,7 @@ import {
   OutlinedInput,
   Select,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { format } from "date-fns";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import Swal from "sweetalert2";
@@ -23,7 +24,7 @@ const AddTest = () => {
     reset,
     formState: { errors },
   } = useForm();
-  
+
   const slots = [
     "08.00 AM - 08.30 AM",
     "08.30 AM - 09.00 AM",
@@ -52,16 +53,16 @@ const AddTest = () => {
       },
     },
   };
-
+  const theme = useTheme();
   function getStyles(name, personName, theme) {
     return {
       fontWeight:
         personName.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
+          ? theme.typography?.fontWeightRegular
+          : theme.typography?.fontWeightMedium,
     };
   }
-  const theme = useTheme();
+
   const [personName, setPersonName] = useState([]);
 
   const handleChange = (event) => {
@@ -73,6 +74,7 @@ const AddTest = () => {
       typeof value === "string" ? value.split(",") : value
     );
   };
+
   const axiosPublic = useAxiosPublic();
   const axiosSecure = useAxiosSecure();
   const onSubmit = async (data) => {
@@ -91,7 +93,7 @@ const AddTest = () => {
           testDetails: testDetails,
           slots: slots,
           testImageURL: image,
-          testDate: new Date(testDate),
+          testDate: format(testDate, "PP"),
         };
         const result = await axiosSecure.post("/addTest", TestInfo);
         // console.log(result.data);
@@ -157,7 +159,7 @@ const AddTest = () => {
                 <span className="label-text">Test Price</span>
               </label>
               <input
-                type="text"
+                type="number"
                 placeholder="Test Price"
                 name="name"
                 {...register("testPrice", {
@@ -187,6 +189,24 @@ const AddTest = () => {
                 <p className="text-red">{errors?.testDate.message}</p>
               )}
             </div>
+
+            {/* Test Slots */}
+            {/* <div className="form-control">
+              <label className="label">
+                <span className="label-text">Slots</span>
+              </label>
+              <input
+                type="number"
+                placeholder="Test Slots"
+                {...register("slots", {
+                  required: "Slots field is required",
+                })}
+                className="input input-bordered w-full focus:outline-none focus:border-px focus:border-first-color"
+              />
+              {errors.slots?.type === "required" && (
+                <p className="text-red">{errors?.slots.message}</p>
+              )}
+            </div> */}
           </div>
           {/* Slots Test */}
           <div className="mt-10">
@@ -255,13 +275,7 @@ const AddTest = () => {
           </div>
 
           <div className="form-control mt-6">
-            <button
-              // className={`btn ${
-              //   samePassword ? "" : "btn-disabled"
-              // } bg-[#D1A054]`}
-
-              className={`btn  bg-first-color text-white`}
-            >
+            <button className={`btn  bg-first-color text-[#fff]`}>
               Add Test
             </button>
           </div>

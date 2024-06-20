@@ -25,7 +25,7 @@ const Dashboard = () => {
                   <h3 className="text-center font-bold lora text-xl text-second-color">
                     GENERAL USER
                   </h3>
-                  <ul className="flex flex-col items-start gap-5  text-[#fff] ">
+                  <ul className="flex flex-col items-start gap-5 mt-5  text-[#fff] ">
                     <li className="cursor-pointer p-2 rounded-xl">
                       <NavLink to="/dashboard/userProfile">My Profile</NavLink>
                     </li>

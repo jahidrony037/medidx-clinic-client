@@ -38,7 +38,7 @@ const Navbar = () => {
   );
   return (
     <nav>
-      <div className="navbar bg-base-100 niramit  z-10 fixed top-0 bg-transparent bg-opacity-40 ">
+      <div className="navbar bg-base-100 niramit  z-10 sticky bg-transparent bg-opacity-40 ">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -64,7 +64,7 @@ const Navbar = () => {
               {navLinks}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="btn btn-ghost text-xl">MediDX</a>
         </div>
         <div className="navbar-center hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 ">{navLinks}</ul>

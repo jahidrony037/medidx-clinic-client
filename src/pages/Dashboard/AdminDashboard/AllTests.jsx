@@ -67,6 +67,7 @@ const AllTests = () => {
                   <th>Test Image</th>
                   <th>Test Name</th>
                   <th>Price</th>
+                  <th>Date</th>
                   <th>Actions</th>
                   <th>Reservations</th>
                 </tr>
@@ -84,16 +85,6 @@ const AllTests = () => {
                   />
                 ))}
               </tbody>
-              {/* foot */}
-              <tfoot>
-                <tr>
-                  <th></th>
-                  <th>Name</th>
-                  <th>Job</th>
-                  <th>Favorite Color</th>
-                  <th></th>
-                </tr>
-              </tfoot>
             </table>
           </div>
         </div>

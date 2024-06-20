@@ -22,6 +22,7 @@ const Test = ({ test, idx, handleDeleteTest, refetch, isPending }) => {
       </td>
       <td>{test.testName}</td>
       <td>{test.testPrice} BDT</td>
+      <td>{test?.testDate}</td>
       <th className="space-x-5">
         <button
           onClick={() => {

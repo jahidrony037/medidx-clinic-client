@@ -1,3 +1,4 @@
+import { useTheme } from "@emotion/react";
 import {
   Box,
   Chip,
@@ -7,7 +8,7 @@ import {
   OutlinedInput,
   Select,
 } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { format } from "date-fns";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -25,7 +26,6 @@ const UpdateTest = ({ test, open, setOpen, refetch, isPending }) => {
     handleSubmit,
     control,
     register,
-
     formState: { errors },
   } = useForm();
 
@@ -62,8 +62,8 @@ const UpdateTest = ({ test, open, setOpen, refetch, isPending }) => {
     return {
       fontWeight:
         personName.indexOf(name) === -1
-          ? theme.typography.fontWeightRegular
-          : theme.typography.fontWeightMedium,
+          ? theme.typography?.fontWeightRegular
+          : theme.typography?.fontWeightMedium,
     };
   }
   const theme = useTheme();
@@ -91,11 +91,11 @@ const UpdateTest = ({ test, open, setOpen, refetch, isPending }) => {
         const image = res.data.data?.display_url;
         const TestInfo = {
           testName: testName,
-          testPrice: testPrice,
+          testPrice: new Number(testPrice),
           testDetails: testDetails,
           slots: slots,
           testImageURL: image,
-          testDate: new Date(testDate),
+          testDate: format(testDate, "PP"),
         };
         const result = await axiosSecure.patch(
           `/allTests/${test?._id}`,
@@ -208,6 +208,25 @@ const UpdateTest = ({ test, open, setOpen, refetch, isPending }) => {
                   <p className="text-red">{errors?.testDate.message}</p>
                 )}
               </div>
+
+              {/* Test Slots */}
+              {/* <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Test Slots</span>
+                </label>
+                <input
+                  type="number"
+                  placeholder="Test Price"
+                  defaultValue={test?.slots || 0}
+                  {...register("slots", {
+                    required: "Slots field is required",
+                  })}
+                  className="input input-bordered w-full focus:outline-none focus:border-px focus:border-first-color"
+                />
+                {errors.slots?.type === "required" && (
+                  <p className="text-red">{errors?.slots.message}</p>
+                )}
+              </div> */}
             </div>
 
             {/* Slots Test */}
