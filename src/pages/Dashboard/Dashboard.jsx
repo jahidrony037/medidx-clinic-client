@@ -1,3 +1,4 @@
+import { FaOpencart } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import Loader from "../../components/Loader";
 import useAdmin from "../../hooks/useAdmin";
@@ -36,6 +37,14 @@ const Dashboard = () => {
                     </li>
                     <li className="cursor-pointer  p-2 rounded-xl">
                       <NavLink to="/dashboard/testResult">Test Results</NavLink>
+                    </li>
+                    <li className="cursor-pointer  p-2 rounded-xl">
+                      <NavLink to="/dashboard/cart">
+                        <button className="btn btn-sm flex items-center bg-first-color">
+                          <FaOpencart size={25} />
+                          <div className="badge badge-first-color">Cart</div>
+                        </button>
+                      </NavLink>
                     </li>
                   </ul>
                 </div>

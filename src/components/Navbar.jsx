@@ -1,10 +1,11 @@
+import { FaOpencart } from "react-icons/fa6";
 import { Link, NavLink } from "react-router-dom";
 import { toast } from "react-toastify";
 import useAuth from "../hooks/useAuth";
-
+import useBookingsTest from "../hooks/useBookingsTest";
 const Navbar = () => {
   const { user, isLoading, show, setShow, LogOut } = useAuth() || {};
-
+  const [cart] = useBookingsTest();
   const handleLogOut = () => {
     // console.log("click the handleLogOut btn");
     LogOut()
@@ -28,12 +29,19 @@ const Navbar = () => {
       <li>
         <NavLink to="/dashboard">Dashboard</NavLink>
       </li>
-
       {user && (
         <li>
           <NavLink to="/updateProfile">Update Profile</NavLink>
         </li>
       )}
+      <li>
+        <NavLink to="dashboard/cart">
+          <button className="btn btn-sm flex items-center bg-first-color">
+            <FaOpencart size={25} />
+            <div className="badge badge-first-color">+{cart?.length}</div>
+          </button>
+        </NavLink>
+      </li>
     </>
   );
   return (

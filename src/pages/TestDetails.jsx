@@ -49,7 +49,7 @@ const TestDetails = () => {
       testTime: data?.slots,
     };
     // console.log(bookingInfo);
-    const res = await axiosSecure.post("/bookings", bookingInfo);
+    const res = await axiosSecure.post("/bookingsTest", bookingInfo);
     if (res.data.acknowledge === false) {
       toast.error(`${res.data?.message} please try another day`);
     }

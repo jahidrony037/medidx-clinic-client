@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainApp from "../layouts/MainApp/MainApp";
 import Appointment from "../pages/Appointment";
+import Cart from "../pages/Cart";
 import AddBanner from "../pages/Dashboard/AdminDashboard/AddBanner";
 import AddTest from "../pages/Dashboard/AdminDashboard/AddTest";
 import AllBanner from "../pages/Dashboard/AdminDashboard/AllBanner";
@@ -116,6 +117,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <UserProfile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/cart",
+        element: (
+          <PrivateRoute>
+            <Cart />
           </PrivateRoute>
         ),
       },
