@@ -36,7 +36,7 @@ const CheckoutForm = ({
   //get client secret
   const getClientSecret = async (price) => {
     const { data } = await axiosSecure.post(`/create-payment-intent`, price);
-    console.log(`Client Secret From sever `, data);
+    // console.log(`Client Secret From sever `, data);
     setClientSecret(data?.clientSecret);
   };
 
@@ -72,7 +72,7 @@ const CheckoutForm = ({
       setProcessing(false);
       return;
     } else {
-      console.log("[PaymentMethod]", paymentMethod);
+      // console.log("[PaymentMethod]", paymentMethod);
       setCardError("");
     }
 
@@ -88,7 +88,7 @@ const CheckoutForm = ({
         },
       });
     if (confirmError) {
-      console.log(confirmError?.message);
+      // console.log(confirmError?.message);
       setCardError(confirmError?.message);
       setProcessing(false);
       return;
