@@ -18,13 +18,13 @@ html {
   margin: 80px auto;
 }
 
-label {
+/* label {
   color: #6b7c93;
   font-weight: 300;
   letter-spacing: 0.025em;
   margin-top: 16px;
   display: block;
-}
+} */
 
 .paying-btn {
   white-space: nowrap;

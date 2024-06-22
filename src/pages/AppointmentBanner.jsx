@@ -5,7 +5,7 @@ import { DayPicker } from "react-day-picker";
 const AppointmentBanner = ({ selectedDate, setSelectedDate }) => {
   return (
     <div>
-      <div className="hero">
+      <div className="hero -mt-32">
         <div className="hero-content flex-col lg:flex-row-reverse justify-center items-center">
           <img
             src={`https://i.ibb.co/nscDmx4/overlay-mri-doctor.png`}

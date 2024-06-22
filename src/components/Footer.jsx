@@ -7,7 +7,7 @@ import logo from "../../public/medidx.svg";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer p-10  text-base-content z-10 mt-[100px]">
+      <footer className="footer p-10  text-base-content mt-[100px]">
         <aside className="mx-auto">
           <img
             src={logo}
