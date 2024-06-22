@@ -109,7 +109,7 @@ const CheckoutForm = ({
         reportStatus: "pending",
         paymentStatus: "paid",
       };
-      console.log("bookingInfo from 104", bookingInfo);
+      // console.log("bookingInfo from 104", bookingInfo);
       if (paymentIntent.id) {
         const res = await axiosSecure.post("/bookingsTest", bookingInfo);
         if (res.data.acknowledge === false) {
