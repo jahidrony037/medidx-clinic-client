@@ -1,4 +1,3 @@
-import { FaOpencart } from "react-icons/fa6";
 import { NavLink, Outlet } from "react-router-dom";
 import Loader from "../../components/Loader";
 import useAdmin from "../../hooks/useAdmin";
@@ -20,7 +19,11 @@ const Dashboard = () => {
                 <div>
                   <div className="avatar flex justify-center py-5">
                     <div className="w-24 rounded-full ring ring-first-color  ring-offset-base-100 ring-offset-2">
-                      <img src={user?.photoURL} className="mx-auto" />
+                      <img
+                        src={user?.photoURL}
+                        title={user?.displayName}
+                        className="mx-auto"
+                      />
                     </div>
                   </div>
                   <h3 className="text-center font-bold lora text-xl text-second-color">
@@ -38,21 +41,25 @@ const Dashboard = () => {
                     <li className="cursor-pointer  p-2 rounded-xl">
                       <NavLink to="/dashboard/testResult">Test Results</NavLink>
                     </li>
-                    <li className="cursor-pointer  p-2 rounded-xl">
+                    {/* <li className="cursor-pointer  p-2 rounded-xl">
                       <NavLink to="/dashboard/cart">
                         <button className="btn btn-sm flex items-center bg-first-color">
                           <FaOpencart size={25} />
                           <div className="badge badge-first-color">Cart</div>
                         </button>
                       </NavLink>
-                    </li>
+                    </li> */}
                   </ul>
                 </div>
               ) : (
                 <div>
                   <div className="avatar flex justify-center py-5">
                     <div className="w-24 rounded-full ring ring-second-color  ring-offset-base-100 ring-offset-2">
-                      <img src={user?.photoURL} className="mx-auto" />
+                      <img
+                        src={user?.photoURL}
+                        title={user?.displayName}
+                        className="mx-auto"
+                      />
                     </div>
                   </div>
                   <h3 className="text-center font-bold lora text-xl text-second-color">
@@ -78,6 +85,11 @@ const Dashboard = () => {
                     </li>
                     <li className="cursor-pointer  p-2 rounded-xl">
                       <NavLink to="/dashboard/addBanner">Add Banner</NavLink>
+                    </li>
+                    <li className="cursor-pointer  p-2 rounded-xl">
+                      <NavLink to="/dashboard/reservations">
+                        Reservations
+                      </NavLink>
                     </li>
                   </ul>
                 </div>

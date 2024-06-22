@@ -7,6 +7,7 @@ import AddTest from "../pages/Dashboard/AdminDashboard/AddTest";
 import AllBanner from "../pages/Dashboard/AdminDashboard/AllBanner";
 import AllTests from "../pages/Dashboard/AdminDashboard/AllTests";
 import AllUsers from "../pages/Dashboard/AdminDashboard/AllUsers";
+import Reservations from "../pages/Dashboard/AdminDashboard/Reservations";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import UserAppointments from "../pages/Dashboard/UserDashboard/UserAppointments";
 import UserProfile from "../pages/Dashboard/UserDashboard/UserProfile";
@@ -107,6 +108,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <AllBanner />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/reservations",
+        element: (
+          <AdminRoute>
+            <Reservations />
           </AdminRoute>
         ),
       },

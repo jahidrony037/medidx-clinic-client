@@ -1,16 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import Swal from "sweetalert2";
 import Loader from "../components/Loader";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
+import BookingModal from "./BookingModal";
 
 const TestDetails = () => {
   const axiosSecure = useAxiosSecure();
   const { id } = useParams();
   const { user } = useAuth() || {};
+  const [open, setOpen] = useState(false);
+  const [appointmentTime, setAppointmentTime] = useState("");
 
   const {
     data: test = {},
@@ -35,33 +38,51 @@ const TestDetails = () => {
   }
   // console.log(test);
 
-  const handleBooking = async (data) => {
-    // console.log(data);
-    const { testName, _id, testPrice, testImageURL, testDate } = test;
-    const bookingInfo = {
+  const onSubmit = async (data) => {
+    setAppointmentTime(data?.slots);
+    const booking = {
+      appointmentDate: test?.testDate,
       email: user?.email,
-      userName: user?.displayName,
-      testId: _id,
-      testName: testName,
-      testPrice: new Number(testPrice),
-      testImageURL: testImageURL,
-      appointmentDate: testDate,
-      testTime: data?.slots,
+      testName: test?.testName,
     };
-    // console.log(bookingInfo);
-    const res = await axiosSecure.post("/bookingsTest", bookingInfo);
-    if (res.data.acknowledge === false) {
-      toast.error(`${res.data?.message} please try another day`);
+    const res = await axiosSecure.post("/checkBookingTest", booking);
+    if (res.data?.acknowledge === false) {
+      setOpen(false);
+      return toast.error(res.data?.message);
     }
-    if (res.data?.insertedId) {
-      refetch();
-      Swal.fire({
-        title: "Your Booking Successfully Done",
-        text: "Please pay amount and confirm your booking",
-        icon: "success",
-      });
+    if (res.data?.acknowledge === true) {
+      setOpen(true);
     }
   };
+
+  // const handleBooking = async (test, appointmentTime) => {
+  //   // console.log(data);
+
+  //   const { testName, _id, testPrice, testImageURL, testDate } = test;
+  //   const bookingInfo = {
+  //     email: user?.email,
+  //     userName: user?.displayName,
+  //     testId: _id,
+  //     testName: testName,
+  //     testPrice: new Number(testPrice),
+  //     testImageURL: testImageURL,
+  //     appointmentDate: testDate,
+  //     testTime: appointmentTime,
+  //   };
+  //   console.log(bookingInfo);
+  //   // const res = await axiosSecure.post("/bookingsTest", bookingInfo);
+  //   // if (res.data.acknowledge === false) {
+  //   //   toast.error(`${res.data?.message} please try another day`);
+  //   // }
+  //   // if (res.data?.insertedId) {
+  //   //   refetch();
+  //   //   Swal.fire({
+  //   //     title: "Your Booking Successfully Done",
+  //   //     text: "Please pay amount and confirm your booking",
+  //   //     icon: "success",
+  //   //   });
+  //   // }
+  // };
 
   return (
     <div>
@@ -84,7 +105,7 @@ const TestDetails = () => {
             <span className="font-bold">Date :</span>
             {test?.testDate}
           </p>
-          <form onSubmit={handleSubmit(handleBooking)} className="space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <p>
               <span className="font-bold">
                 Slots:{" "}
@@ -124,11 +145,19 @@ const TestDetails = () => {
               className={`btn bg-first-color text-[#fff] ${
                 test?.slots?.length < 1 ? "btn-disabled" : ""
               }`}
-              // onClick={() => handleBooking(test)}
+              // onClick={() => setOpen(true)}
             >
               Book Now
             </button>
           </form>
+          <BookingModal
+            // handleBooking={handleBooking}
+            appointmentTime={appointmentTime}
+            test={test}
+            open={open}
+            setOpen={setOpen}
+            refetch={refetch}
+          />
         </div>
       </div>
     </div>

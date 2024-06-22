@@ -1,34 +1,37 @@
 import { PropTypes } from "prop-types";
 import { FcCancel } from "react-icons/fc";
-import Swal from "sweetalert2";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Loader from "../../../components/Loader";
 
-const AppointmentDetail = ({ booking, idx, refetch }) => {
-  const axiosSecure = useAxiosSecure();
-  const handleCancelBooking = (bookingTest) => {
-    Swal.fire({
-      title: "Are you sure you want to Cancel your booking? ",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#47ccc8",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes",
-    }).then(async (result) => {
-      if (result.isConfirmed) {
-        const res = await axiosSecure.delete(
-          `/bookingsTest/${bookingTest?._id}`
-        );
-        if (res.data?.deletedCount) {
-          refetch();
-          Swal.fire({
-            title: "Deleted!",
-            text: "Your Booking has been Cancel.",
-            icon: "success",
-          });
-        }
-      }
-    });
-  };
+const AppointmentDetail = ({ handleCancelBooking, booking, idx, loading }) => {
+  // const axiosSecure = useAxiosSecure();
+  // const handleCancelBooking = (bookingTest) => {
+  //   Swal.fire({
+  //     title: "Are you sure you want to Cancel your booking? ",
+  //     icon: "warning",
+  //     showCancelButton: true,
+  //     confirmButtonColor: "#47ccc8",
+  //     cancelButtonColor: "#d33",
+  //     confirmButtonText: "Yes",
+  //   }).then(async (result) => {
+  //     if (result.isConfirmed) {
+  //       const res = await axiosSecure.delete(
+  //         `/bookingsTest/${bookingTest?._id}`
+  //       );
+  //       if (res.data?.deletedCount) {
+  //         // refetch();
+  //         Swal.fire({
+  //           title: "Deleted!",
+  //           text: "Your Booking has been Cancel.",
+  //           icon: "success",
+  //         });
+  //       }
+  //     }
+  //   });
+  // };
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <tr className="active-row cursor-pointer">
       <th>
@@ -53,6 +56,10 @@ const AppointmentDetail = ({ booking, idx, refetch }) => {
           <FcCancel size={30} className="cursor-pointer" />
         </button>
       </th>
+      <th>{booking?.paymentStatus}</th>
+      {/* <th>
+        Not Paid <button className="btn bg-first-color text-[#fff]">pay</button>
+      </th> */}
     </tr>
   );
 };
@@ -61,6 +68,8 @@ AppointmentDetail.propTypes = {
   booking: PropTypes.object,
   idx: PropTypes.number,
   refetch: PropTypes.func,
+  handleCancelBooking: PropTypes.func,
+  loading: PropTypes.bool,
 };
 
 export default AppointmentDetail;

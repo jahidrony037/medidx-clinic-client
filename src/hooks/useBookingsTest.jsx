@@ -4,15 +4,22 @@ import useAxiosSecure from "./useAxiosSecure";
 
 const useBookingsTest = () => {
   const axiosSecure = useAxiosSecure();
-  const { user } = useAuth() || {};
-  const { data, isPending, refetch } = useQuery({
+  const { user, loading } = useAuth() || {};
+  const {
+    data: bookings,
+    isPending,
+    refetch,
+  } = useQuery({
     queryKey: ["data"],
+    enabled:
+      !loading && !!user?.email && !!localStorage.getItem("access-token"),
     queryFn: async () => {
       const res = await axiosSecure.get(`/bookingsTest?email=${user?.email}`);
+      // console.log(res.data);
       return res.data;
     },
   });
-  return [data, isPending, refetch];
+  return [bookings, isPending, refetch];
 };
 
 export default useBookingsTest;

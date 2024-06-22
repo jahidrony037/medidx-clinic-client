@@ -71,7 +71,7 @@ const AllBanner = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const result = await axiosSecure.delete(`/allBanners/${banner?._id}`);
-        console.log(result.data);
+        // console.log(result.data);
         if (result.data?.deletedCount > 0) {
           refetch();
           Swal.fire({

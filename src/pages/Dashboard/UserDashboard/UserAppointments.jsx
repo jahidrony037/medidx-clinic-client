@@ -1,12 +1,67 @@
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 import Loader from "../../../components/Loader";
-import useBookingsTest from "../../../hooks/useBookingsTest";
+import useAuth from "../../../hooks/useAuth";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import AppointmentDetail from "./AppointmentDetail";
 
 const UserAppointments = () => {
   // const { user } = useAuth() || {};
-  const [bookings, isPending, refetch] = useBookingsTest();
+  const [bookings, setBookings] = useState([]);
+
+  const axiosSecure = useAxiosSecure();
+  const { user, loading } = useAuth();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axiosSecure.get(`/bookingsTest?email=${user?.email}`);
+      setBookings(res.data);
+    };
+    fetchData();
+  }, [user?.email, axiosSecure]);
+
+  // const {
+  //   data: bookings = [],
+  //   isPending,
+  //   refetch,
+  // } = useQuery({
+  //   queryKey: ["data"],
+  //   queryFn: async () => {
+  //     const res = await axiosSecure.get(`/bookingsTest?email=${user?.email}`);
+  //     return res.data;
+  //   },
+  // });
+
   // console.log(bookings);
-  if (isPending) {
+
+  const handleCancelBooking = (bookingTest) => {
+    Swal.fire({
+      title: "Are you sure you want to Cancel your booking? ",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#47ccc8",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const res = await axiosSecure.delete(
+          `/bookingsTest/${bookingTest?._id}`
+        );
+        if (res.data?.deletedCount) {
+          // refetch();
+          setBookings(
+            bookings.filter((booking) => booking?._id !== bookingTest?._id)
+          );
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your Booking has been Cancel.",
+            icon: "success",
+          });
+        }
+      }
+    });
+  };
+  if (loading) {
     return <Loader />;
   }
   return (
@@ -38,7 +93,9 @@ const UserAppointments = () => {
                   key={booking?._id}
                   booking={booking}
                   idx={idx}
-                  refetch={refetch}
+                  loading={loading}
+                  handleCancelBooking={handleCancelBooking}
+                  // refetch={refetch}
                 />
               ))}
             </tbody>
