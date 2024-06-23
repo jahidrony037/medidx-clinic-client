@@ -1,6 +1,8 @@
 # MediDX-Clinic
 
 Live Site URL: ['https://medidx-clinic.web.app/']
+admin-username: rony@gmail.com
+password: Abc\*#@
 
 This a robust Diagnostic Center Management System, a full-stack web
 application that effectively manages appointments, patient records, test

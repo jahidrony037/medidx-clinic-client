@@ -1,4 +1,5 @@
 import Banner from "../components/Banner";
+import ChooseCenter from "./ChooseCenter";
 import Services from "./Services";
 
 const Home = () => {
@@ -6,6 +7,7 @@ const Home = () => {
     <div className="space-y-24">
       <Banner />
       <Services />
+      <ChooseCenter />
     </div>
   );
 };

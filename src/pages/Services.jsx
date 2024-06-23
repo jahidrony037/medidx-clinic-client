@@ -22,7 +22,7 @@ const Services = () => {
         our services
       </h2>
 
-      <div className="grid md:grid-cols-12 grid-cols-1 gap-10 items-center justify-center px-7 mt-10">
+      <div className="grid md:grid-cols-12 grid-cols-1 gap-10 items-center justify-center  mt-10">
         <div className="bg-first-color px-6 py-10 rounded-xl niramit md:col-span-4 h-[470px] space-y-10">
           <h2 className="text-[40px] font-bold text-[#fff]">
             World leader <br />
@@ -45,7 +45,7 @@ const Services = () => {
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-4 grid-cols-2 gap-4 md:col-span-8 md:h-[472px] p-6 rounded bg-base-200">
+        <div className="grid  md:grid-cols-4 md:items-center grid-cols-2 gap-4 md:col-span-8 md:h-[472px] p-6 rounded bg-base-200">
           {services?.map((service) => (
             <Service key={service?._id} service={service} />
           ))}

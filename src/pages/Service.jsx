@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 const Service = ({ service }) => {
   return (
     <div>
-      <div className="py-[35px] px-[5px] rounded-lg md:w-[200px] md:h-[200px] bg-base-100 cursor-pointer hover:bg-second-color hover:text-[#ffffff]">
+      <div className="py-[35px] px-[5px] rounded-lg  md:h-[200px] bg-base-100 cursor-pointer hover:bg-second-color hover:text-[#ffffff]">
         <img
           src={service?.featureImage}
           alt="feature Image"
