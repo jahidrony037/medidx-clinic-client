@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import MainApp from "../layouts/MainApp/MainApp";
 import Appointment from "../pages/Appointment";
 import Cart from "../pages/Cart";
+import Contact from "../pages/Contact";
 import AddBanner from "../pages/Dashboard/AdminDashboard/AddBanner";
 import AddDoctor from "../pages/Dashboard/AdminDashboard/AddDoctor";
 import AddTest from "../pages/Dashboard/AdminDashboard/AddTest";
@@ -13,6 +14,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import UserAppointments from "../pages/Dashboard/UserDashboard/UserAppointments";
 import UserProfile from "../pages/Dashboard/UserDashboard/UserProfile";
 import UserTestResult from "../pages/Dashboard/UserDashboard/UserTestResult";
+import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import SignUP from "../pages/SignUP";
@@ -24,18 +26,18 @@ import PrivateRoute from "./PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/signUP",
-    errorElement: <p>Error Page</p>,
+    errorElement: <ErrorPage />,
     element: <SignUP />,
   },
   {
     path: "/login",
-    errorElement: <p>Error Page</p>,
+    errorElement: <ErrorPage />,
     element: <Login />,
   },
   {
     path: "/",
     element: <MainApp />,
-    errorElement: <p>Error page</p>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -52,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: "/allTest",
         element: <Appointment />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
       {
         path: "/testDetails/:id",
