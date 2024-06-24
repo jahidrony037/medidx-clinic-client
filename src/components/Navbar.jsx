@@ -18,17 +18,16 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/about">About</NavLink>
-      </li>
-      <li>
         <NavLink to="/allTest">All Test</NavLink>
       </li>
       <li>
         <NavLink to="/allDoctor">Our Doctors</NavLink>
       </li>
-
       <li>
         <NavLink to="/dashboard/userProfile">Dashboard</NavLink>
+      </li>
+      <li>
+        <NavLink to="/about">About</NavLink>
       </li>
       {user && (
         <li>

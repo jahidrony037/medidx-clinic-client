@@ -21,6 +21,7 @@ import Login from "../pages/Login";
 import SignUP from "../pages/SignUP";
 import TestDetails from "../pages/TestDetails";
 import UpdateProfile from "../pages/UpdateProfile";
+import About from "./../pages/About";
 import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/allDoctor",
         element: <Doctors />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/contact",
