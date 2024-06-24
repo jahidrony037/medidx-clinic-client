@@ -1,6 +1,7 @@
 import Banner from "../components/Banner";
 import ChooseCenter from "./ChooseCenter";
 import ClinicStat from "./ClinicStat";
+import MriScanning from "./MriScanning";
 import Services from "./Services";
 
 const Home = () => {
@@ -9,7 +10,8 @@ const Home = () => {
       <Banner />
       <Services />
       <ChooseCenter />
-      <ClinicStat/>
+      <ClinicStat />
+      <MriScanning />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { FaFacebook } from "react-icons/fa";
 import { RiTwitterXLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
-import logo from "../../public/medidx.svg";
+import logo from "/medidx.svg";
 const Footer = () => {
   return (
     <div>
