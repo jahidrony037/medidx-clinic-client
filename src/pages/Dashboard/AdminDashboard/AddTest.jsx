@@ -111,7 +111,7 @@ const AddTest = () => {
 
   return (
     <div>
-      <h2 className="text-4xl font-bold mt-10 text-first-color lora text-center uppercase">
+      <h2 className="text-4xl font-bold md:mt-10 text-first-color lora text-center uppercase">
         Here Add NEW TEST
       </h2>
       <div className="mt-20 shadow-lg p-9 rounded-xl">

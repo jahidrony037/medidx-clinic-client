@@ -66,7 +66,7 @@ const UserAppointments = () => {
   }
   return (
     <div>
-      <h2 className="text-center text-5xl font-bold text-first-color lora">
+      <h2 className="text-center text-5xl font-bold md:mt-10 text-first-color lora">
         USER APPOINTMENTS
       </h2>
       <div className="mt-10">

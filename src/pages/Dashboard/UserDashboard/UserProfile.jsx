@@ -75,7 +75,7 @@ const UserProfile = () => {
   };
   return (
     <div className="mt-[68px] niramit">
-      <h2 className="text-center text-first-color text-4xl font-bold lora leading-relaxed">
+      <h2 className="text-center text-first-color md:mt-10 text-4xl font-bold lora leading-relaxed">
          Your Profile
       </h2>
       <div>

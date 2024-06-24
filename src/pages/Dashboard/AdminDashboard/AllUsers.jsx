@@ -98,7 +98,7 @@ const AllUsers = () => {
   };
   return (
     <div className="niramit">
-      <h2 className="text-center text-4xl font-bold lora text-first-color">
+      <h2 className="text-center text-4xl font-bold lora md:mt-10 text-first-color">
         All USERS
       </h2>
       <div>

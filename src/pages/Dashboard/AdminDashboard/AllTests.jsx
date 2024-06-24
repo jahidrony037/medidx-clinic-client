@@ -47,7 +47,7 @@ const AllTests = () => {
   };
   return (
     <div>
-      <h2 className="text-4xl mt-10 font-bold text-first-color lora text-center uppercase">
+      <h2 className="text-4xl md:mt-10 font-bold text-first-color lora text-center uppercase">
         ALL AVailable Tests
       </h2>
       {isPending ? (
@@ -69,7 +69,6 @@ const AllTests = () => {
                   <th>Price</th>
                   <th>Date</th>
                   <th>Actions</th>
-                  <th>Reservations</th>
                 </tr>
               </thead>
               <tbody>

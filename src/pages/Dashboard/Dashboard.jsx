@@ -1,16 +1,37 @@
+import { useState } from "react";
+import { IoMdClose } from "react-icons/io";
+import { TiThMenu } from "react-icons/ti";
 import { NavLink, Outlet } from "react-router-dom";
 import Loader from "../../components/Loader";
 import useAdmin from "../../hooks/useAdmin";
 import useAuth from "../../hooks/useAuth";
-
 const Dashboard = () => {
   const [isAdmin, adminLoading] = useAdmin() || [];
   // console.log(isAdmin);
   const { user } = useAuth();
+  const [open, setOpen] = useState(true);
+  // console.log(open);
   return (
     <div className="niramit">
-      <div className="flex gap-5">
-        <div className="bg-first-color min-h-screen pl-2 pr-5 md:w-[15%]">
+      {/* <Transition show={open} /> */}
+      <div className="md:flex md:gap-5 ">
+        <TiThMenu
+          className={`md:hidden absolute left-0  z-30 bg-first-color  text-[#ffff]`}
+          size={35}
+          title="Menu"
+          onClick={() => setOpen(true)}
+        />
+        <div
+          className={`bg-first-color mt-0  pl-2 pr-5 md:w-[15%] w-full ${
+            !open && "z-10"
+          }  ${open ? "absolute" : "hidden md:flex"} 
+          top-0 min-h-screen md:relative`}
+        >
+          <IoMdClose
+            className={`md:hidden absolute right-1 text-[#ffff]`}
+            size={35}
+            onClick={() => setOpen(false)}
+          />
           {adminLoading ? (
             <Loader />
           ) : (
@@ -103,8 +124,10 @@ const Dashboard = () => {
             </div>
           )}
         </div>
-        <div className="flex-1">
-          <Outlet />
+        <div className={`${!open ? "static" : "hidden"} md:flex flex-1`}>
+          <div className="flex-1">
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>

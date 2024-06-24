@@ -88,7 +88,7 @@ const Reservations = () => {
   //   console.log(reservations);
   return (
     <div>
-      <h2 className="text-4xl font-bold mt-10 text-first-color lora text-center uppercase">
+      <h2 className="text-4xl font-bold md:mt-10 text-first-color lora text-center uppercase">
         All RESERVATIONS According to test
       </h2>
       <div className="flex px-5 items-center justify-center gap-5 mt-6">

@@ -85,7 +85,7 @@ const AllBanner = () => {
   };
   return (
     <div>
-      <h2 className="text-4xl font-bold mt-10 text-first-color lora text-center uppercase">
+      <h2 className="text-4xl font-bold md:mt-10 text-first-color lora text-center uppercase">
         AlL BANNERS
       </h2>
       {isPending ? (

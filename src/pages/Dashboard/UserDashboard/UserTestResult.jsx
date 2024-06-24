@@ -24,7 +24,7 @@ const UserTestResult = () => {
 
   return (
     <div>
-      <h2 className="text-center text-5xl font-bold lora text-first-color">
+      <h2 className="text-center text-5xl font-bold lora md:mt-10 text-first-color">
         USER TEST RESULTS
       </h2>
       <div className="mt-10">

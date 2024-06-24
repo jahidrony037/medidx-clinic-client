@@ -130,7 +130,7 @@ const UpdateTest = ({ test, open, setOpen, refetch, isPending }) => {
           }}
           animationDuration={800}
         >
-          <h2 className="text-center uppercase text-4xl font-bold  lora text-first-color ">
+          <h2 className="text-center uppercase text-4xl font-bold  lora md:mt-10 text-first-color ">
             Details of a TEST
           </h2>
           <form onSubmit={handleSubmit(handleUpdateTest)}>
