@@ -46,9 +46,10 @@ const Services = () => {
         </div>
 
         <div className="grid  md:grid-cols-4 md:items-center grid-cols-2 gap-4 md:col-span-8 md:h-[472px] p-6 rounded bg-base-200">
-          {services?.map((service) => (
-            <Service key={service?._id} service={service} />
-          ))}
+          {services &&
+            services?.map((service) => (
+              <Service key={service?._id} service={service} />
+            ))}
         </div>
       </div>
     </div>

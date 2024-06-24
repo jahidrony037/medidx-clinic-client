@@ -3,6 +3,7 @@ import Loader from "../../../components/Loader";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import ResultRow from "./ResultRow";
+import { Helmet } from "react-helmet-async";
 
 const UserTestResult = () => {
   const axiosSecure = useAxiosSecure();
@@ -24,6 +25,9 @@ const UserTestResult = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>MediDX || TestResult</title>
+      </Helmet>
       <h2 className="text-center text-5xl font-bold lora md:mt-10 text-first-color">
         USER TEST RESULTS
       </h2>

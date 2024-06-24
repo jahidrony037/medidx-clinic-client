@@ -4,6 +4,7 @@ import Loader from "../../../components/Loader";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Reservation from "./Reservation";
+import { Helmet } from "react-helmet-async";
 
 const Reservations = () => {
   const axiosSecure = useAxiosSecure();
@@ -88,6 +89,9 @@ const Reservations = () => {
   //   console.log(reservations);
   return (
     <div>
+      <Helmet>
+        <title>MediDX || AllReservations</title>
+      </Helmet>
       <h2 className="text-4xl font-bold md:mt-10 text-first-color lora text-center uppercase">
         All RESERVATIONS According to test
       </h2>

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { IoMdClose } from "react-icons/io";
 import { TiThMenu } from "react-icons/ti";
 import { NavLink, Outlet } from "react-router-dom";
@@ -9,28 +10,31 @@ const Dashboard = () => {
   const [isAdmin, adminLoading] = useAdmin() || [];
   // console.log(isAdmin);
   const { user } = useAuth();
-  const [open, setOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true);
   // console.log(open);
   return (
     <div className="niramit">
       {/* <Transition show={open} /> */}
+      <Helmet>
+        <title>MediDX || Profile</title>
+      </Helmet>
       <div className="md:flex md:gap-5 ">
         <TiThMenu
           className={`md:hidden absolute left-0  z-30 bg-first-color  text-[#ffff]`}
           size={35}
           title="Menu"
-          onClick={() => setOpen(true)}
+          onClick={() => setIsOpen(true)}
         />
         <div
           className={`bg-first-color mt-0  pl-2 pr-5 md:w-[15%] w-full ${
-            !open && "z-10"
-          }  ${open ? "absolute" : "hidden md:flex"} 
+            !isOpen && "z-10"
+          }  ${isOpen ? "absolute" : "hidden md:flex"} 
           top-0 min-h-screen md:relative`}
         >
           <IoMdClose
             className={`md:hidden absolute right-1 text-[#ffff]`}
             size={35}
-            onClick={() => setOpen(false)}
+            onClick={() => setIsOpen(false)}
           />
           {adminLoading ? (
             <Loader />
@@ -112,6 +116,9 @@ const Dashboard = () => {
                         Reservations
                       </NavLink>
                     </li>
+                    <li className="cursor-pointer  p-2 rounded-xl">
+                      <NavLink to="/dashboard/addDoctor">Add Doctor</NavLink>
+                    </li>
                   </ul>
                 </div>
               )}
@@ -124,7 +131,7 @@ const Dashboard = () => {
             </div>
           )}
         </div>
-        <div className={`${!open ? "static" : "hidden"} md:flex flex-1`}>
+        <div className={`${!isOpen ? "static" : "hidden"} md:flex flex-1`}>
           <div className="flex-1">
             <Outlet />
           </div>

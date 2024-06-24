@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import Loader from "../../../components/Loader";
 import useAuth from "../../../hooks/useAuth";
@@ -47,6 +48,9 @@ const AllTests = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>MediDX || AllTests</title>
+      </Helmet>
       <h2 className="text-4xl md:mt-10 font-bold text-first-color lora text-center uppercase">
         ALL AVailable Tests
       </h2>

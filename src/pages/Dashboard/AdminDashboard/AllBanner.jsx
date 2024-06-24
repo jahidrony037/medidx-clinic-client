@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import Loader from "../../../components/Loader";
 import useAuth from "../../../hooks/useAuth";
@@ -85,6 +86,9 @@ const AllBanner = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>MediDX || AllBanner</title>
+      </Helmet>
       <h2 className="text-4xl font-bold md:mt-10 text-first-color lora text-center uppercase">
         AlL BANNERS
       </h2>

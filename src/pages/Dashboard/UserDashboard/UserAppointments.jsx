@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import Loader from "../../../components/Loader";
 import useAuth from "../../../hooks/useAuth";
@@ -66,6 +67,9 @@ const UserAppointments = () => {
   }
   return (
     <div>
+      <Helmet>
+        <title>MediDX || Appointments</title>
+      </Helmet>
       <h2 className="text-center text-5xl font-bold md:mt-10 text-first-color lora">
         USER APPOINTMENTS
       </h2>

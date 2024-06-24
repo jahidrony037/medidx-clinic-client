@@ -3,6 +3,7 @@ import MainApp from "../layouts/MainApp/MainApp";
 import Appointment from "../pages/Appointment";
 import Cart from "../pages/Cart";
 import AddBanner from "../pages/Dashboard/AdminDashboard/AddBanner";
+import AddDoctor from "../pages/Dashboard/AdminDashboard/AddDoctor";
 import AddTest from "../pages/Dashboard/AdminDashboard/AddTest";
 import AllBanner from "../pages/Dashboard/AdminDashboard/AllBanner";
 import AllTests from "../pages/Dashboard/AdminDashboard/AllTests";
@@ -116,6 +117,14 @@ const router = createBrowserRouter([
         element: (
           <AdminRoute>
             <Reservations />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/addDoctor",
+        element: (
+          <AdminRoute>
+            <AddDoctor />
           </AdminRoute>
         ),
       },

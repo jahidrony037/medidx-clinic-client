@@ -20,6 +20,7 @@ import "../../../components/css/ModalAnimation.css";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useImageHostURL from "../../../hooks/useImageHostURL";
+import { Helmet } from "react-helmet-async";
 const UpdateTest = ({ test, open, setOpen, refetch, isPending }) => {
   const host_url = useImageHostURL();
   const {
@@ -115,6 +116,9 @@ const UpdateTest = ({ test, open, setOpen, refetch, isPending }) => {
   };
   return (
     <div>
+      <Helmet>
+        <title>MediDX || UpdateTest</title>
+      </Helmet>
       {isPending ? (
         <Loader />
       ) : (

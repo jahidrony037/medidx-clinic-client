@@ -15,6 +15,7 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import useImageHostURL from "../../../hooks/useImageHostURL";
+import { Helmet } from "react-helmet-async";
 const AddTest = () => {
   const host_url = useImageHostURL();
   const {
@@ -111,6 +112,9 @@ const AddTest = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>MediDX || AddTest</title>
+      </Helmet>
       <h2 className="text-4xl font-bold md:mt-10 text-first-color lora text-center uppercase">
         Here Add NEW TEST
       </h2>

@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import User from "./User";
+import { Helmet } from "react-helmet-async";
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
   const axiosPublic = useAxiosPublic();
@@ -98,6 +99,9 @@ const AllUsers = () => {
   };
   return (
     <div className="niramit">
+      <Helmet>
+        <title>MediDX || AllUsers</title>
+      </Helmet>
       <h2 className="text-center text-4xl font-bold lora md:mt-10 text-first-color">
         All USERS
       </h2>

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
@@ -54,6 +55,9 @@ const AddBanner = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>MediDX || AddBanner</title>
+      </Helmet>
       <h2 className="text-4xl font-bold md:mt-10 text-first-color lora text-center uppercase">
         Here Add Banner
       </h2>
