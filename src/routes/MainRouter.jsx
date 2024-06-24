@@ -14,6 +14,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import UserAppointments from "../pages/Dashboard/UserDashboard/UserAppointments";
 import UserProfile from "../pages/Dashboard/UserDashboard/UserProfile";
 import UserTestResult from "../pages/Dashboard/UserDashboard/UserTestResult";
+import Doctors from "../pages/Doctors";
 import ErrorPage from "../pages/ErrorPage";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: "/allTest",
         element: <Appointment />,
+      },
+      {
+        path: "/allDoctor",
+        element: <Doctors />,
       },
       {
         path: "/contact",

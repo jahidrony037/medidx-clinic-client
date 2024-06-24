@@ -23,6 +23,9 @@ const Navbar = () => {
       <li>
         <NavLink to="/allTest">All Test</NavLink>
       </li>
+      <li>
+        <NavLink to="/allDoctor">Our Doctors</NavLink>
+      </li>
 
       <li>
         <NavLink to="/dashboard/userProfile">Dashboard</NavLink>
