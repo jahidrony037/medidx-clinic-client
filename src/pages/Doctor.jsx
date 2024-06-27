@@ -3,7 +3,11 @@ const Doctor = ({ doctor }) => {
   return (
     <div className="card bg-base-100 shadow-xl niramit">
       <figure className="px-10 pt-10">
-        <img src={doctor?.doctorImage} alt="doctor" className="rounded-xl" />
+        <img
+          src={doctor?.doctorImage}
+          alt="doctor"
+          className="rounded-xl h-[300px] object-cover"
+        />
       </figure>
       <div className="card-body items-center text-center">
         <h2 className="card-title">{doctor?.doctorName}</h2>

@@ -136,7 +136,7 @@ const AddDoctor = () => {
 
           <div className="form-control mt-6">
             <button className={`btn  bg-first-color text-[#fff]`}>
-              Add Test
+              Add Doctor
             </button>
           </div>
         </form>

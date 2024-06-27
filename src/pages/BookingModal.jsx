@@ -50,7 +50,7 @@ const BookingModal = ({
     const newPrice = testPrice - Math.ceil(testPrice * (couponRate / 100));
     setPayingPrice(newPrice);
     //console.log(payingPrice, testPrice);
-    refetch();
+    // refetch();
   };
 
   return (

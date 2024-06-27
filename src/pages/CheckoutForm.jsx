@@ -116,7 +116,7 @@ const CheckoutForm = ({
           toast.error(`${res.data?.message} please try another day`);
         }
         if (res.data?.insertedId) {
-          refetch();
+          // refetch();
           Swal.fire({
             title: "Your Booking Successfully Done",
             icon: "success",
