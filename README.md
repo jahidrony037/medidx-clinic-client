@@ -42,3 +42,39 @@ we use many yarn/npm packages,mention bellow some of them
 - [TanStackQuery] - using for fetching data
 - [axios] - using for fetching data
 - [JWT] - using for authorization token base
+
+
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone git@github.com:jahidrony037/medidx-clinic-client.git
+```
+
+Go to the project directory
+
+```bash
+  cd medidx-clinic-client
+```
+
+Install dependencies
+
+```bash
+  yarn
+```
+
+Install other packages
+-please check dependencies in packages.json and install with yarn 
+
+Example:
+```bash
+  yarn add packageName
+```
+
+Start the server
+
+```bash
+  yarn dev
+```
